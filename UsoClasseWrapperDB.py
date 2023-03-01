@@ -29,7 +29,7 @@ print("*******************************")
 
 print()
 print("\n***** TEST inserisciPost *****")
-parametri = ("Omino del meteo", "Ieri nevicava!!!")
+parametri = ("Cristiano Ronaldo ", "SIUUUUUM")
 wrp.inserisciPost(parametri)
 print(wrp.elencoPost(as_dict = True))
 print("********************************")

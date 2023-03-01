@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
 #classe wrapper
 #funzioni di connetti e di disconnetti + varie
 #le variabili di istanza sono le 4 variabili per la connetti
@@ -50,7 +57,7 @@ class WrapperDB:
         lista = []
         try:
             cur = conn.cursor(as_dict = as_dict)
-            sql = "SELECT Id, Autore, Testo, [Like] FROM PC_FB_Post ORDER BY [Like] DESC"
+            sql = "SELECT Id, Autore, Testo, [Like] FROM ROSS_FB_Post ORDER BY [Like] DESC"
             cur.execute(sql)
             lista = cur.fetchall()
         except:
@@ -68,7 +75,7 @@ class WrapperDB:
             cursore = conn.cursor(as_dict = True)
             sql = f"""
                 SELECT Id, Autore, Testo, [Like] 
-                FROM PC_FB_Post 
+                FROM ROSS_FB_Post 
                 WHERE id = {id}   
                 """
             cursore.execute(sql)
@@ -87,7 +94,7 @@ class WrapperDB:
         try:
             c = self.connetti() 
             cursore = c.cursor()
-            sql = "INSERT INTO PC_FB_Post (Autore, Testo) VALUES (%s , %s)"
+            sql = "INSERT INTO ROSS_FB_Post (Autore, Testo) VALUES (%s , %s)"
             cursore.execute(sql, parametri)
             c.commit()
             #print("INSERIMENTO POST AVVENUTO")
@@ -104,7 +111,7 @@ class WrapperDB:
         try:
             c = self.connetti() 
             cursore = c.cursor()
-            sql = "UPDATE PC_FB_Post SET [Like] = "
+            sql = "UPDATE ROSS_FB_Post SET [Like] = "
             if is_like == True: 
                 sql += "[Like] + 1 "
             else:
@@ -126,7 +133,7 @@ class WrapperDB:
         try:
             c = self.connetti() 
             cursore = c.cursor()
-            sql = "DELETE PC_FB_Post WHERE id = %d"
+            sql = "DELETE ROSS_FB_Post WHERE id = %d"
             cursore.execute(sql, id)
             c.commit()
             #print("ELIMINA POST AVVENUTO")
@@ -137,8 +144,3 @@ class WrapperDB:
             #print("\ELIMINA POST/i: Si sono verificati degli errori!")
             self.disconnetti(c)
             return False
-
-    
-
-
-	    
